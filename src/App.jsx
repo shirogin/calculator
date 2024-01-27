@@ -26,19 +26,20 @@ function App() {
 
 	// evaluate the input
 	const handleEqualClick = () => {
-		try {
-			setInput((oldInput) => {
-				// evaluate the input
+		setInput((oldInput) => {
+			// evaluate the input
+			try {
 				const evaluatedInput = eval(oldInput);
 				// set the result to the evaluated input
 				setResult(evaluatedInput);
 				// clear the input
-				return "";
-			});
-		} catch (error) {
-			console.error(error);
-			setResult("ERROR");
-		}
+			} catch (error) {
+				console.error(error);
+				setResult("ERROR");
+				return oldInput;
+			}
+			return "";
+		});
 	};
 	// clear the input
 	const handleClearClick = () => {
